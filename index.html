@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d13">
+  <meta name="description" content="Painel demonstrativo de monitoramento com reprodução contínua de uma câmera.">
+  <title>Central de Monitoramento | CAM 01</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Central de Monitoramento - início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h7A2.5 2.5 0 0 1 16 8.5v7a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 4 15.5v-7Z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="m16 10 4-2v8l-4-2v-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="10" cy="12" r="2.2" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <strong>CENTRAL DE MONITORAMENTO</strong>
+          <small>PAINEL DE VISUALIZAÇÃO</small>
+        </span>
+      </a>
+
+      <div class="header-right">
+        <div class="system-state"><span class="state-dot"></span><span>SISTEMA OPERACIONAL</span></div>
+        <span class="header-divider" aria-hidden="true"></span>
+        <time class="header-clock" id="header-clock">--:--:--</time>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="page-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> VISUALIZAÇÃO DE CÂMERA</div>
+          <h1>Monitoramento <span>/</span> CAM 01</h1>
+          <p class="page-description">Visualização individual do ponto monitorado.</p>
+        </div>
+        <div class="feed-count"><span class="feed-count-number">01</span><span>CÂMERA<br>DISPONÍVEL</span></div>
+      </div>
+
+      <section class="monitor-layout" aria-label="Câmera monitorada">
+        <div class="camera-column">
+          <section class="camera-card" aria-labelledby="camera-title">
+            <div class="camera-card-header">
+              <div class="camera-name-group">
+                <span class="camera-index">01</span>
+                <div>
+                  <h2 id="camera-title">CAM 01 <span class="camera-separator">/</span> PONTO MONITORADO</h2>
+                  <p>CANAL DE VÍDEO PRINCIPAL</p>
+                </div>
+              </div>
+              <div class="live-indicator" id="playback-state"><span class="live-dot"></span><span>REPRODUZINDO</span></div>
+            </div>
+
+            <div class="video-stage" id="video-stage">
+              <div class="stage-topline" aria-hidden="true">
+                <span class="stage-tag">CAM-01</span>
+                <span class="stage-source">FEED DE DEMONSTRAÇÃO</span>
+              </div>
+
+              <video
+                id="camera-video"
+                class="camera-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                poster="assets/poster.jpg"
+                aria-label="Vídeo da câmera 01 em reprodução contínua"
+              >
+                <source src="assets/camera-01.mp4" type="video/mp4">
+                Seu navegador não oferece suporte à reprodução de vídeo HTML5.
+              </video>
+
+              <div class="video-error" id="video-error" hidden>
+                <span class="error-symbol">!</span>
+                <strong>NÃO FOI POSSÍVEL CARREGAR O VÍDEO</strong>
+                <span>Verifique se o arquivo assets/camera-01.mp4 foi publicado junto com esta página.</span>
+              </div>
+
+              <div class="stage-bottomline" aria-hidden="true">
+                <span class="timestamp"><span class="timestamp-icon">◷</span><time id="video-clock">--/--/---- --:--:--</time></span>
+                <span class="stage-camera-id">CAM 01&nbsp; • &nbsp;H.264</span>
+              </div>
+            </div>
+
+            <div class="camera-card-footer">
+              <div class="source-indicator"><span class="source-dot"></span> FONTE DE VÍDEO LOCAL</div>
+              <div class="camera-actions">
+                <button class="control-button" id="audio-button" type="button" aria-pressed="false" title="Ativar áudio">
+                  <svg class="button-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M11 5 6 9H3v6h3l5 4V5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                    <path d="m17 9 4 6m0-6-4 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  </svg>
+                  <span>ÁUDIO DESLIGADO</span>
+                </button>
+                <button class="control-button primary-control" id="fullscreen-button" type="button" title="Abrir em tela cheia">
+                  <svg class="button-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M8 4H4v4m12-4h4v4M4 16v4h4m12-4v4h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>TELA CHEIA</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <div class="disclosure"><span class="disclosure-icon">ⓘ</span> Demonstração visual: o conteúdo exibido é um arquivo MP4 reproduzido em loop, não uma transmissão de câmera ao vivo.</div>
+        </div>
+
+        <aside class="info-column" aria-label="Informações da câmera">
+          <section class="info-card connection-card">
+            <div class="panel-heading"><span>STATUS DO CANAL</span><span class="panel-menu">•••</span></div>
+            <div class="connection-status"><span class="connection-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5a11 11 0 0 1 16 0M7.5 16a6 6 0 0 1 9 0M11 19.5a1.5 1.5 0 1 1 2 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><strong>Canal disponível</strong><small>Reprodução local ativa</small></div></div>
+            <div class="meter-row"><span>ESTADO</span><strong class="status-text">NORMAL</strong></div>
+            <div class="meter-track"><span></span></div>
+          </section>
+
+          <section class="info-card details-card">
+            <div class="panel-heading"><span>INFORMAÇÕES DO CANAL</span><span class="panel-number">01</span></div>
+            <dl class="details-list">
+              <div><dt>Identificação</dt><dd>CAM-01</dd></div>
+              <div><dt>Origem</dt><dd>Arquivo MP4</dd></div>
+              <div><dt>Codificação</dt><dd>H.264 / AAC</dd></div>
+              <div><dt>Resolução</dt><dd>1038 × 480</dd></div>
+              <div><dt>Duração</dt><dd>00:07,7</dd></div>
+              <div><dt>Reprodução</dt><dd><span class="loop-badge"><span>↻</span> LOOP CONTÍNUO</span></dd></div>
+            </dl>
+          </section>
+
+          <section class="info-card recording-card">
+            <div class="recording-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3.2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div><strong>Reprodução contínua</strong><p>O vídeo reinicia automaticamente ao chegar ao final.</p></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>MONITORAMENTO <b>•</b> CAM 01</span>
+      <span>INTERFACE DEMONSTRATIVA <b>•</b> <span id="footer-year">2026</span></span>
+    </footer>
+  </div>
+</body>
+</html>
